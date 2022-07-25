@@ -16,10 +16,17 @@ class CreateReserveSerializer(serializers.Serializer):
         fields = ['project_code', 'description', 'customer_name']
 
     def create(self, validated_data):
-        data = AXServicess.reserve_va(
+        response = AXServicess().reserve_va(
             project_code=validated_data['project_code'],
             customer_name=validated_data['customer_name'],
             description=validated_data['description']
         )
+        if isinstance(response.json(), list) and response.status_code == 200:
+            response_data = {
+                'va_code': response.json()[0]['NoVA'],
+                'project_code': response.json()[0]['Project'],
+                'customer_name': response.json()[0]['CustName'],
+                'description': response.json()[0]['Description'],
+            }
 
-        return data
+        return response_data

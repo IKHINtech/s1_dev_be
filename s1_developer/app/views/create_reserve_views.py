@@ -1,6 +1,7 @@
 from tkinter.tix import Tree
 
 from django.http import JsonResponse
+from rest_framework.response import Response
 from s1_developer.app.models import Reserve
 from rest_framework import viewsets
 
@@ -19,6 +20,4 @@ class CreateReserveViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         data = serializer.create(serializer.validated_data)
 
-        return_data = ReturnReserve(data)
-
-        return JsonResponse(return_data.data, safe=False)
+        return Response(data)
