@@ -8,10 +8,10 @@
             "name": "Python: Django",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}\\manage.py",
+            "program": "${workspaceFolder}/manage.py",
             "args": [
                 "runserver",
-                "192.168.92.46:8000"
+                "localhost:8000"
             ],
             "django": true,
             "justMyCode": true

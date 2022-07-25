@@ -8,6 +8,7 @@ from datetime import date
 
 class Sales(models.Model):
     # id = id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
+    project = models.ForeignKey(to='Project', on_delete=models.CASCADE)
     sales_name = models.CharField(max_length=100)
 
 
