@@ -65,7 +65,7 @@ class ReserveSerializer(serializers.Serializer):
                     }
                 )
         data = {
-            'next': None if len(response_data) < 10 else url.replace(f'pages={pages}', f'pages={pages+1}'),
+            'next': None if len(response_data) < 10 else url.replace(f'pages={int(pages)}', f'pages={int(pages)+1}'),
             'results': response_data,
 
         }
